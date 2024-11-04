@@ -11,7 +11,8 @@ class Post extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'body'];
+    protected $fillable = [
+        'user_id','title','body','logo','url',];
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

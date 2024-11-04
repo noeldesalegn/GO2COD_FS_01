@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post; // Make sure to import the Post model
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,12 +25,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $posts = Post::with('user')->paginate(5);
+        return view('index',['posts' => $posts]);
     }
     public function post()
-    {
-        return view('post');
-    }
+{
+    $posts = Post::with('user')->get(); // Fetch posts from the database
+    return view('post', compact('posts')); // Pass posts to the view
+}
     public function about()
     {
         return view('about');
