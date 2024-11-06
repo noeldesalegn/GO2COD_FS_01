@@ -30,10 +30,18 @@
                                 <h3 class="post-subtitle">{{ $post->body }}</h3>
                             </a>
                             <p class="post-meta">
-                                Posted by <a href="#!">{{ $post->user->name ?? 'Unknown' }}</a>
+                                Posted by <a href="#!">{{ $post->user->first_name ?? 'Unknown' }}</a>
                                 on {{ $post->created_at->format('F j, Y') }}
                             </p>
                         </div>
+                        {{-- @auth
+                            <a href="/post/{{ $post->id }}/edit" class="btn btn-primary">Edit blog</a>
+                        @endauth --}}
+
+                        @can('edit-post', $post)
+                        <a href="/post/{{ $post->id }}/edit" class="btn btn-primary">Edit blog</a>
+                        @endcan
+
                         <!-- Divider -->
                         <hr class="my-4" />
                     @endforeach

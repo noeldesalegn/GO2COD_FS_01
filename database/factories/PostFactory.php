@@ -19,10 +19,12 @@ class PostFactory extends Factory
     {
         return [
             'user_id' =>User::factory(),
-            'title' => fake()->title(),
-            'body' => fake()->text(),
-            'logo' => fake()->imageUrl(),
-            'url' => fake()->url(),
+            'title' => fake()->sentence(),
+            'subTitle' => fake()->sentence(),
+            'body' => $this->faker->paragraphs(3, true),
+            'second_body' => $this->faker->paragraphs(2, true),
+            'logo' => $this->faker->optional()->image('public/storage/images', 640, 480, null, false),
+            'url' => $this->faker->url,
         ];
     }
 }

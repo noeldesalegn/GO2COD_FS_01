@@ -16,9 +16,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('title');
+            $table->string('subTitle');
             $table->text('body');
-            $table->string('logo');
-            $table->string('url');
+            $table->text('second_body');
+            $table->string('logo')->nullable(); // Nullable string column to store logo path
+            $table->string('url')->nullable();
             $table->timestamps();
         });
     }

@@ -12,9 +12,13 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id','title','body','logo','url',];
+        'user_id','title','subTitle','body','second_body','logo','url',]; // or protected $guarded = []; to allow all fields to be mass assignable
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+    public function getLogoUrlAttribute()
+    {
+        return $this->logo ? asset('storage/' . $this->logo) : null;
     }
 }
