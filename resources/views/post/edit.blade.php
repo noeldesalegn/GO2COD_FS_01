@@ -43,7 +43,7 @@
                 @if ($post->logo)
                     <div class="mt-3">
                         <p>Current Logo:</p>
-                        <img src="{{ asset('storage/' . $post->logo) }}" alt="Current Logo" class="img-fluid" style="max-width: 150px;">
+                        <img src="{{ asset($post->logo) }}" alt="Current Logo" class="img-fluid" style="max-width: 150px;">
                     </div>
                 @endif
 
