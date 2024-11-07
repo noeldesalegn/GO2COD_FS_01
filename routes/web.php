@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SessuiController;
 
+Route::get('test', function () {
+    return new App\Mail\ContactMail();
+});
+
 // Authentication Routes
 Auth::routes();
 
